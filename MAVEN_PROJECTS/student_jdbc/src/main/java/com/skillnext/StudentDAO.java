@@ -7,9 +7,9 @@ public class StudentDAO {
 
     private static final String URL = "jdbc:mysql://localhost:3306/skillnext_db";
     private static final String USER = "root";
-    private static final String PASSWORD = "thakur1506"; // change this
+    private static final String PASSWORD = "thakur1506"; // change if needed
 
-    // Add students
+    // Add student
     public void addStudent(Student stu) throws Exception {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
         String sql = "INSERT INTO student (name, sem, departement) VALUES (?, ?, ?)";
@@ -24,7 +24,7 @@ public class StudentDAO {
     // Fetch all students
     public List<Student> getAllStudents() throws Exception {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-	String sql = "SELECT * FROM student";
+        String sql = "SELECT * FROM student";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
 
@@ -41,7 +41,7 @@ public class StudentDAO {
         return list;
     }
 
-    // Delete students
+    // Delete student
     public void deleteStudent(int id) throws Exception {
         Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
         String sql = "DELETE FROM student WHERE id=?";
@@ -62,5 +62,28 @@ public class StudentDAO {
         stmt.setInt(4, stu.getId());
         stmt.executeUpdate();
         conn.close();
+    }
+
+    // Count students in a department
+    public int countStudentsByDept(String dept) {
+        int count = 0;
+
+        try {
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            String sql = "SELECT COUNT(*) FROM student WHERE departement = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, dept);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
     }
 }

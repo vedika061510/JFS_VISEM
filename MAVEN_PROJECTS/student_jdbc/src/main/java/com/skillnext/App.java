@@ -15,7 +15,8 @@ public class App {
             System.out.println("2. View All Students");
             System.out.println("3. Update Student");
             System.out.println("4. Delete Student");
-            System.out.println("5. Exit");
+      System.out.println("5. Count Students by Department");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = sc.nextInt();
@@ -73,10 +74,18 @@ public class App {
                         System.out.println("Student Deleted Successfully!");
                         break;
 
-                    case 5: // Exit
+        case 5:// count students
+       System.out.print("Enter Department Name: ");
+           String dname = sc.nextLine();
+          int count = dao.countStudentsByDept(dname);
+          System.out.println("Total Students in " + dname + " Department: " +       count);
+          break;
+            
+                    case 6: // Exit
                         System.out.println("Exiting Program...");
                         System.exit(0);
                         break;
+
 
                     default:
                         System.out.println("Invalid Choice! Try again.");
