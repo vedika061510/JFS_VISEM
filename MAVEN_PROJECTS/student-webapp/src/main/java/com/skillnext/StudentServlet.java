@@ -10,13 +10,18 @@ public class StudentServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String name = req.getParameter("name");
-        String sem = req.getParameter("sem");
-        String department = req.getParameter("department");
+
+        int sem = Integer.parseInt(
+            req.getParameter("sem")        
+        );
+
+        String departement =
+            req.getParameter("departement"); 
 
         Student stu = new Student();
         stu.setName(name);
         stu.setSem(sem);
-        stu.setDepartment(department);
+        stu.setDepartement(departement);
 
         StudentDAO.save(stu);
 

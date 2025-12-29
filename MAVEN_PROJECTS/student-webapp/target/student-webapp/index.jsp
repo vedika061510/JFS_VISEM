@@ -15,7 +15,7 @@
         <input type="text" name="sem" required><br><br>
 
         Department:
-        <input type="text" name="department" required><br><br>
+        <input type="text" name="departement" required><br><br>
 
         <input type="submit" value="Save Student">
     </form>

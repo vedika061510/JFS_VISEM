@@ -1,16 +1,14 @@
 package com.skillnext;
 
 public class Student {
+
     private int id;
     private String name;
-    private String sem;
-    private String department;
+    private int sem;               
+    private String departement;     
 
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -20,17 +18,17 @@ public class Student {
         this.name = name;
     }
 
-    public String getSem() {
+    public int getSem() {
         return sem;
     }
-    public void setSem(String sem) {
+    public void setSem(int sem) {
         this.sem = sem;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getDepartement() {
+        return departement;
     }
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartement(String departement) {
+        this.departement = departement;
     }
 }

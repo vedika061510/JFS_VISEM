@@ -17,12 +17,14 @@ public class StudentDAO {
                 "thakur1506"
             );
 
-            String sql = "INSERT INTO student(name, sem, department) VALUES(?,?,?)";
+            String sql =
+              "INSERT INTO student(name, sem, departement) VALUES (?,?,?)";
+
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, stu.getName());
-            ps.setString(2, stu.getSem());
-            ps.setString(3, stu.getDepartment());
+            ps.setInt(2, stu.getSem());
+            ps.setString(3, stu.getDepartement());
 
             ps.executeUpdate();
             con.close();
